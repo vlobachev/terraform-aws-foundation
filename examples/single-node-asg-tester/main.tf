@@ -2,10 +2,10 @@ locals {
   cidr                 = "192.168.0.0/16"
   private_subnet_cidrs = ["192.168.100.0/24", "192.168.101.0/24"]
   public_subnet_cidrs  = ["192.168.0.0/24", "192.168.1.0/24"]
-  region = "ap-northeast-1"
+  region               = "ap-northeast-1"
 }
 
-data "aws_availability_zones" "azs" { }
+data "aws_availability_zones" "azs" {}
 
 module "vpc" {
   source               = "fpco/foundation/aws//modules/vpc-scenario-2"
