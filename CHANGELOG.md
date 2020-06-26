@@ -6,6 +6,7 @@
 
 ### Examples
 
+* asg-lifecycle-hooks: Fix conflicting bug in ASG, simplify the example.
 
 # v0.9.3
 
@@ -15,7 +16,6 @@
 * Fixes to ASG, single-node-ASG and persistent-ebs modules
 * Drop deprecated nexus-asg example
 * Fixes for VPC Scenario 2 example
-
 
 ### Modules
 
