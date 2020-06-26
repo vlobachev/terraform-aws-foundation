@@ -30,6 +30,8 @@ data "aws_availability_zones" "available" {
 data "aws_region" "current" {
 }
 
+data "aws_caller_identity" "current" {}
+
 # Cloud init script for the autoscaling group
 data "template_file" "main" {
   template = file("${path.module}/cloud-config.yml")
@@ -54,6 +56,16 @@ data "aws_iam_policy_document" "permissions" {
       aws_sns_topic.main.arn,
     ]
   }
+  
+ statement {
+    effect = "Allow"
+
+    actions = [
+      "sqs:*",
+    ]
+
+    resources = ["arn:aws:sqs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:lifecycled-*"]
+  }  
 
   statement {
     effect = "Allow"
